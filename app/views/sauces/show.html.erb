@@ -1,0 +1,13 @@
+<%= image_tag @sauce.image.url %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sauce.description %>
+</p>
+
+<% if @sauce.user == current_user %>
+	<%= link_to 'Edit', edit_sauce_path(@sauce) %> |
+<% end %>
+<%= link_to 'Back', sauces_path %>

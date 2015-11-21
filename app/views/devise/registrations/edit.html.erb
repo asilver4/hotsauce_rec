@@ -1,0 +1,115 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h1>Edit <%= resource_name.to_s.humanize %></h1>
+    </div>
+  </div>
+  <div class="panel-body">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", :autofocus => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control", :autofocus => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+        <%= f.password_field :password, class: "form-control", :autocomplete => "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+        <%= f.password_field :current_password, class: "form-control" %>
+      </div>
+
+      <div class="field">
+  <h2>Select your heat level</h2>
+    <%= f.label :mild %>
+    <%= f.check_box :mild, autofocus: true, class: "form-control" %>
+
+    <%= f.label :medium %>
+    <%= f.check_box :medium, autofocus: true, class: "form-control" %>
+
+    <%= f.label :hot %>
+    <%= f.check_box :hot, autofocus: true, class: "form-control" %>
+
+    <%= f.label :hotter %>
+    <%= f.check_box :hotter, autofocus: true, class: "form-control" %>
+
+    <%= f.label :hottest %>
+    <%= f.check_box :hottest, autofocus: true, class: "form-control" %>
+
+    <%= f.label :superhot %>
+    <%= f.check_box :superhot, autofocus: true, class: "form-control" %>
+ </div>
+
+ <h2>Rate the following options from 1 through 5, where:</h2>
+ <h3>
+ <ul>
+  <li>1 = I dislike it</li>
+  <li>2 = I don't prefer it</li>
+  <li>3 = I'm indifferent</li>
+  <li>4 = I like it</li>
+  <li>5 = I love it</li>
+</ul></h3>
+
+ <div class="form-group">
+  <h2>Do you like sweet sauce?</h2>
+    <%= f.label :sweet %>
+    <%= f.number_field :sweet, autofocus: true, class: "form-control" %></div>
+
+ <div class="form-group">
+  <h2>Do you like smoky sauce?</h2>
+    <%= f.label :smoke %>
+    <%= f.number_field :smoke, autofocus: true, class: "form-control" %></div>
+
+ <div class="form-group">
+  <h2>Do you like fruity sauce?</h2>
+    <%= f.label :fruit %>
+    <%= f.number_field :fruit, autofocus: true, class: "form-control" %></div>
+
+ <div class="form-group">
+  <h2>Do you like vinegar?</h2>
+    <%= f.label :vinegar %>
+    <%= f.number_field :vinegar, autofocus: true, class: "form-control" %></div>
+
+ <div class="form-group">
+  <h2>Do you like garlic?</h2>
+    <%= f.label :garlic %>
+    <%= f.number_field :garlic, autofocus: true, class: "form-control" %></div>
+
+ <div class="form-group">
+  <h2>Do you like salty sauce?</h2>
+    <%= f.label :salt %>
+    <%= f.number_field :salt, autofocus: true, class: "form-control" %></div>
+ 
+ <div class="field">
+  <h2>Select any dietary restrictions</h2>
+    <%= f.label :vegan %>
+    <%= f.check_box :vegan, autofocus: true, class: "form-control" %>
+
+    <%= f.label :no_gluten %>
+    <%= f.check_box :no_gluten, autofocus: true, class: "form-control" %>
+
+    <%= f.label :no_alcohol %>
+    <%= f.check_box :no_alcohol, autofocus: true, class: "form-control" %>
+
+      <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-warning" %></p>
+
+    <%= link_to "Back", :back %>
+  </div>
+</div>

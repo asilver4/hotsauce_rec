@@ -1,0 +1,25 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Sauce', new_sauce_path %>
+<% end %>
+
+
+<div id="sauces" class="transitions-enabled">
+  <% @sauces.each do |sauce| %>
+    <div class="box panel panel-default">
+      <%= image_tag sauce.image.url %>
+      <div class="panel-body">
+        <%= sauce.description %>
+        <%= link_to 'Show', sauce %>
+        <% if sauce.user == current_user %>
+          <%= link_to 'Edit', edit_sauce_path(sauce) %>
+          <%= link_to 'Destroy', sauce, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+    </div>
+  <% end %>
+</div>
+
+
+
