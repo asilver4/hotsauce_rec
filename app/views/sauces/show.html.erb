@@ -4,7 +4,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @sauce.description %>
+  <%= @sauce.description.html_safe %>
 </p>
 
 <% if @sauce.user == current_user %>

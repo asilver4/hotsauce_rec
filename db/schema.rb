@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115192325) do
+ActiveRecord::Schema.define(version: 20151124030017) do
 
   create_table "pins", force: true do |t|
     t.string   "description"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151115192325) do
     t.boolean  "vegan"
     t.boolean  "no_gluten"
     t.boolean  "no_alcohol"
+    t.integer  "constant",           default: 1
   end
 
   add_index "sauces", ["user_id"], name: "index_sauces_on_user_id"
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 20151115192325) do
     t.boolean  "vegan"
     t.boolean  "no_gluten"
     t.boolean  "no_alcohol"
+    t.integer  "constant",               default: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
