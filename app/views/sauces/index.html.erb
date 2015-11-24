@@ -10,7 +10,7 @@
     <div class="box panel panel-default">
       <%= image_tag sauce.image.url %>
       <div class="panel-body">
-        <%= sauce.description %>
+        <%= sauce.description.html_safe %>
         <%= link_to 'Show', sauce %>
         <% if sauce.user == current_user %>
           <%= link_to 'Edit', edit_sauce_path(sauce) %>
