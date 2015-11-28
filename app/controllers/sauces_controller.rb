@@ -12,15 +12,16 @@ class SaucesController < ApplicationController
      if current_user.nil?
       @sauces = Sauce.all
      else 
-      @temp = Sauce.all.joins("inner join users on sauces.constant = users.constant")
+      @temp = Sauce.all.joins(:user)
       .vegan_user(@user)
       .gluten_user(@user)
       .alcohol_user(@user)
-      .order("(abs((users.sweet - sauces.sweet)*(users.sweet - sauces.sweet)))+abs(((users.smoke - sauces.smoke)*(users.smoke - sauces.smoke)))+abs(((users.fruit - sauces.fruit)*(users.fruit - sauces.fruit)))+abs(((users.garlic - sauces.garlic)*(users.garlic - sauces.garlic)))+abs(((users.vinegar - sauces.vinegar)*(users.vinegar - sauces.vinegar)))+abs(((users.salt - sauces.salt)*(users.salt - sauces.salt)))")
+      .order("((users.mild - sauces.mild)*(users.mild - sauces.mild)*9)+((users.medium - sauces.medium)*(users.medium - sauces.medium)*9)+((users.hot - sauces.hot)*(users.hot - sauces.hot)*9)+((users.hotter - sauces.hotter)*(users.hotter - sauces.hotter)*9)+((users.hottest - sauces.hottest)*(users.hottest - sauces.hottest)*9)+((users.superhot - sauces.superhot)*(users.superhot - sauces.superhot)*9)+((users.sweet - sauces.sweet)*(users.sweet - sauces.sweet))+((users.smoke - sauces.smoke)*(users.smoke - sauces.smoke))+((users.fruit - sauces.fruit)*(users.fruit - sauces.fruit))+((users.garlic - sauces.garlic)*(users.garlic - sauces.garlic))+((users.vinegar - sauces.vinegar)*(users.vinegar - sauces.vinegar))+((users.salt - sauces.salt)*(users.salt - sauces.salt))")
       
       @sauces = @temp & @temp
     end
       #@sauces = @temp
+      #("inner join users on sauces.constant = users.constant")
       #.joins(:user)
       #.joins("left join users on sauces.user_id = users.id")
       #.mild(current_user)

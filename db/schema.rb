@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124030017) do
+ActiveRecord::Schema.define(version: 20151128020147) do
 
-  create_table "pins", force: true do |t|
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
+  create_table "descriptors", force: true do |t|
+    t.string  "name"
+    t.integer "value"
   end
 
-  add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+  create_table "preferences", force: true do |t|
+    t.integer "user_id"
+    t.integer "property"
+  end
 
   create_table "sauces", force: true do |t|
     t.string   "description"
@@ -31,22 +32,6 @@ ActiveRecord::Schema.define(version: 20151124030017) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean  "mild"
-    t.boolean  "medium"
-    t.boolean  "hot"
-    t.boolean  "hotter"
-    t.boolean  "hottest"
-    t.boolean  "superhot"
-    t.integer  "sweet"
-    t.integer  "smoke"
-    t.integer  "fruit"
-    t.integer  "vinegar"
-    t.integer  "garlic"
-    t.integer  "salt"
-    t.boolean  "vegan"
-    t.boolean  "no_gluten"
-    t.boolean  "no_alcohol"
-    t.integer  "constant",           default: 1
   end
 
   add_index "sauces", ["user_id"], name: "index_sauces_on_user_id"
@@ -65,22 +50,6 @@ ActiveRecord::Schema.define(version: 20151124030017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.boolean  "mild"
-    t.boolean  "medium"
-    t.boolean  "hot"
-    t.boolean  "hotter"
-    t.boolean  "hottest"
-    t.boolean  "superhot"
-    t.integer  "sweet"
-    t.integer  "smoke"
-    t.integer  "fruit"
-    t.integer  "vinegar"
-    t.integer  "garlic"
-    t.integer  "salt"
-    t.boolean  "vegan"
-    t.boolean  "no_gluten"
-    t.boolean  "no_alcohol"
-    t.integer  "constant",               default: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
