@@ -49,3 +49,11 @@ gem "mini_magick"
 gem 'masonry-rails', '~> 0.2.0'
 
 gem 'jquery-turbolinks'
+
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+	gem 'pry'
+	gem 'pry-remote'
+	gem 'pry-nav'
+end
