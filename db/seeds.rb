@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+%w{heat sweetness smokiness saltiness fruitiness vinegariness garlicness}.each do |parameter|
+	Descriptor.create name: parameter
+end
+
+

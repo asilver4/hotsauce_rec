@@ -6,35 +6,8 @@ class SaucesController < ApplicationController
   # GET /sauces
   # GET /sauces.json
   def index
-      @user = current_user
-      @temp = []
-
-     if current_user.nil?
       @sauces = Sauce.all
-     else 
-      @temp = Sauce.all.joins(:user)
-      .vegan_user(@user)
-      .gluten_user(@user)
-      .alcohol_user(@user)
-      .order("((users.mild - sauces.mild)*(users.mild - sauces.mild)*9)+((users.medium - sauces.medium)*(users.medium - sauces.medium)*9)+((users.hot - sauces.hot)*(users.hot - sauces.hot)*9)+((users.hotter - sauces.hotter)*(users.hotter - sauces.hotter)*9)+((users.hottest - sauces.hottest)*(users.hottest - sauces.hottest)*9)+((users.superhot - sauces.superhot)*(users.superhot - sauces.superhot)*9)+((users.sweet - sauces.sweet)*(users.sweet - sauces.sweet))+((users.smoke - sauces.smoke)*(users.smoke - sauces.smoke))+((users.fruit - sauces.fruit)*(users.fruit - sauces.fruit))+((users.garlic - sauces.garlic)*(users.garlic - sauces.garlic))+((users.vinegar - sauces.vinegar)*(users.vinegar - sauces.vinegar))+((users.salt - sauces.salt)*(users.salt - sauces.salt))")
-      
-      @sauces = @temp & @temp
-    end
-      #@sauces = @temp
-      #("inner join users on sauces.constant = users.constant")
-      #.joins(:user)
-      #.joins("left join users on sauces.user_id = users.id")
-      #.mild(current_user)
-      #.medium(current_user)
-      #.hot(current_user)
-      #.hotter(current_user)
-      #.hottest(current_user)
-      #.superhot(current_user)
-
-      #.order("(current_user.sweet - sauces.sweet)*2")
-      #.where("(users.vegan = sauces.vegan) and (users.no_alcohol = sauces.no_alcohol) and (users.no_gluten = sauces.no_gluten) and( (users.mild = sauces.mild) or (users.medium = sauces.medium) or (users.hot = sauces.hot) or (users.hotter = sauces.hotter) or (users.hottest = sauces.hottest) or (users.superhot = sauces.superhot) )")
-    
-  end
+ end
 
   # GET /sauces/1
   # GET /sauces/1.json
@@ -44,7 +17,10 @@ class SaucesController < ApplicationController
 
   # GET /sauces/new
   def new
-    @sauce = current_user.sauces.build
+    @sauce = Sauce.new
+    Descriptor.all.each do |descriptor|
+      @sauce.properties << descriptor
+    end
   end
 
   # GET /sauces/1/edit

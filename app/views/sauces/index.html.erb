@@ -12,10 +12,9 @@
       <div class="panel-body">
         <%= sauce.description.html_safe %>
         <%= link_to 'Show', sauce %>
-        <% if sauce.user == current_user %>
-          <%= link_to 'Edit', edit_sauce_path(sauce) %>
-          <%= link_to 'Destroy', sauce, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+        <%= link_to 'Edit', edit_sauce_path(sauce) %>
+        <%= link_to 'Destroy', sauce, method: :delete, data: { confirm: 'Are you sure?' } %>
+      
     </div>
     </div>
   <% end %>

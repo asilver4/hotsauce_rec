@@ -21,67 +21,9 @@
     <%= f.file_field :image, class: "form-control" %>
   </div>
 
-  <div class="field">
-  <h2>Select your heat level</h2>
-    <%= f.label :mild %>
-    <%= f.check_box :mild, autofocus: true, class: "form-control" %>
-
-    <%= f.label :medium %>
-    <%= f.check_box :medium, autofocus: true, class: "form-control" %>
-
-    <%= f.label :hot %>
-    <%= f.check_box :hot, autofocus: true, class: "form-control" %>
-
-    <%= f.label :hotter %>
-    <%= f.check_box :hotter, autofocus: true, class: "form-control" %>
-
-    <%= f.label :hottest %>
-    <%= f.check_box :hottest, autofocus: true, class: "form-control" %>
-
-    <%= f.label :superhot %>
-    <%= f.check_box :superhot, autofocus: true, class: "form-control" %>
- </div>
-
- <div class="form-group">
-  <h2>Sweet sauce? (rating from 1 to 5) </h2>
-    <%= f.label :sweet %>
-    <%= f.number_field :sweet, autofocus: true, class: "form-control" %></div>
-
- <div class="form-group">
-  <h2>Smoky sauce? (rating from 1 to 5) </h2>
-    <%= f.label :smoke %>
-    <%= f.number_field :smoke, autofocus: true, class: "form-control" %></div>
-
- <div class="form-group">
-  <h2>Fruity sauce? (rating from 1 to 5) </h2>
-    <%= f.label :fruit %>
-    <%= f.number_field :fruit, autofocus: true, class: "form-control" %></div>
-
- <div class="form-group">
-  <h2>Vinegar? (rating from 1 to 5) </h2>
-    <%= f.label :vinegar %>
-    <%= f.number_field :vinegar, autofocus: true, class: "form-control" %></div>
-
- <div class="form-group">
-  <h2>Garlic? (rating from 1 to 5) </h2>
-    <%= f.label :garlic %>
-    <%= f.number_field :garlic, autofocus: true, class: "form-control" %></div>
-
- <div class="form-group">
-  <h2>Salty sauce? (rating from 1 to 5) </h2>
-    <%= f.label :salt %>
-    <%= f.number_field :salt, autofocus: true, class: "form-control" %></div>
- 
- <div class="field">
-  <h2>Select any dietary restrictions</h2>
-    <%= f.label :vegan %>
-    <%= f.check_box :vegan, autofocus: true, class: "form-control" %>
-
-    <%= f.label :no_gluten %>
-    <%= f.check_box :no_gluten, autofocus: true, class: "form-control" %>
-
-    <%= f.label :no_alcohol %>
-    <%= f.check_box :no_alcohol, autofocus: true, class: "form-control" %>
+  <% @sauce.properties.each do |property| %>
+    <%= property.descriptor.name %>
+  <% end %>
 
 
   <div class="actions">

@@ -1,3 +1,4 @@
-class Preference < ActiveRecord::Base
-	belongs_to :describable
+class Property < ActiveRecord::Base
+	has_many :descriptors
+	belongs_to :sauce
 end

@@ -11,16 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128020147) do
+ActiveRecord::Schema.define(version: 20151128033608) do
 
   create_table "descriptors", force: true do |t|
-    t.string  "name"
-    t.integer "value"
+    t.string "name"
   end
 
   create_table "preferences", force: true do |t|
     t.integer "user_id"
-    t.integer "property"
+    t.integer "descriptor_id"
+    t.integer "value"
+  end
+
+  create_table "properties", force: true do |t|
+    t.integer "sauce_id"
+    t.integer "descriptor_id"
+    t.integer "value"
   end
 
   create_table "sauces", force: true do |t|
