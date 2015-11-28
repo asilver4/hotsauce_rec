@@ -19,7 +19,8 @@ class SaucesController < ApplicationController
   def new
     @sauce = Sauce.new
     Descriptor.all.each do |descriptor|
-      @sauce.properties << descriptor
+      property = Property.create descriptor:descriptor 
+      @sauce.properties << property
     end
   end
 
